@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface GlitchTextProps {
   text: string;
   className?: string;
+  style?: React.CSSProperties;
   as?: "h1" | "h2" | "h3" | "h4" | "span" | "p";
   intensity?: "low" | "medium" | "high";
 }
@@ -12,6 +13,7 @@ interface GlitchTextProps {
 export default function GlitchText({
   text,
   className = "",
+  style,
   as: Tag = "h1",
   intensity = "medium",
 }: GlitchTextProps) {
@@ -95,6 +97,7 @@ export default function GlitchText({
         ref={ref as React.RefObject<HTMLHeadingElement>}
         className={`glitch-wrap ${className}`}
         data-text={text}
+        style={style}
       >
         {text}
       </Tag>
