@@ -60,8 +60,8 @@ export default function NavBar() {
           </span>
         </Link>
 
-        {/* Right: Live feed + nav links */}
-        <div className="flex items-center gap-4 md:gap-6">
+        {/* Right: nav links */}
+        <div className="flex items-center">
           <Link
             href="/files"
             className="text-terminal/80 hover:text-terminal text-xs tracking-widest transition-colors hidden sm:block"
@@ -69,16 +69,6 @@ export default function NavBar() {
           >
             [ FILES ]
           </Link>
-
-          <div className="flex items-center gap-2">
-            <div
-              className="w-2 h-2 rounded-full bg-redacted dot-pulse"
-              style={{ boxShadow: "0 0 6px var(--redacted)" }}
-            />
-            <span className="text-xs text-terminal/75 tracking-widest hidden md:block">
-              LIVE FEED ACTIVE
-            </span>
-          </div>
         </div>
       </div>
 
