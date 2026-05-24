@@ -60,8 +60,8 @@ export default function NavBar() {
           </span>
         </Link>
 
-        {/* Right: Live feed + nav links */}
-        <div className="flex items-center gap-4 md:gap-6">
+        {/* Right: nav links */}
+        <div className="flex items-center">
           <Link
             href="/files"
             className="text-terminal/60 hover:text-terminal text-xs tracking-widest transition-colors hidden sm:block"
@@ -69,7 +69,6 @@ export default function NavBar() {
           >
             [ FILES ]
           </Link>
-
         </div>
       </div>
 
