@@ -147,6 +147,17 @@ const mockFiles: Record<string, FileRecord> = {
   },
 };
 
+function idToKey(id: string): string {
+  return Buffer.from(id, "base64url").toString("utf-8");
+}
+
+function keyToType(key: string): "pdf" | "video" | "image" {
+  const lower = key.toLowerCase();
+  if (lower.endsWith(".pdf")) return "pdf";
+  if (lower.match(/\.(mp4|mov|avi|mkv|webm)$/)) return "video";
+  return "image";
+}
+
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -154,22 +165,27 @@ export async function GET(
   const { id } = await params;
 
   if (!BUCKET || !ACCESS_KEY || !SECRET_KEY) {
-    // Mock mode — no real presigned URL
     const file = mockFiles[id];
     if (!file) {
       return NextResponse.json({ error: "File not found" }, { status: 404 });
     }
-    return NextResponse.json({
-      url: null, // no real URL in mock mode
-      metadata: file,
-    });
+    return NextResponse.json({ url: null, metadata: file });
   }
 
   try {
-    const file = mockFiles[id];
-    if (!file) {
-      return NextResponse.json({ error: "File not found" }, { status: 404 });
-    }
+    const key = idToKey(id);
+    const name = key.split("/").pop() || key;
+    const releaseDate = key.startsWith("may-22/") ? "may-22" : "may-8";
+
+    const metadata: FileRecord = {
+      id,
+      key,
+      name,
+      type: keyToType(key),
+      size: 0,
+      lastModified: "",
+      releaseDate,
+    };
 
     const client = new S3Client({
       region: REGION,
@@ -179,16 +195,10 @@ export async function GET(
       },
     });
 
-    const command = new GetObjectCommand({
-      Bucket: BUCKET,
-      Key: file.key,
-    });
+    const command = new GetObjectCommand({ Bucket: BUCKET, Key: key });
+    const url = await getSignedUrl(client, command, { expiresIn: 900 });
 
-    const url = await getSignedUrl(client, command, {
-      expiresIn: 900, // 15 minutes
-    });
-
-    return NextResponse.json({ url, metadata: file });
+    return NextResponse.json({ url, metadata });
   } catch (err) {
     console.error("S3 presign error:", err);
     return NextResponse.json({ error: "Failed to generate presigned URL" }, { status: 500 });

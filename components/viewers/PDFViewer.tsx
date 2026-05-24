@@ -5,8 +5,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-// Use a CDN worker to avoid bundling issues
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
 interface PDFViewerProps {
   url: string;
@@ -59,7 +58,9 @@ export default function PDFViewer({ url, fileName }: PDFViewerProps) {
         <div style={{ fontSize: "2rem", opacity: 0.5 }}>⚠</div>
         <p className="text-sm tracking-widest">DOCUMENT LOAD ERROR</p>
         <p className="text-xs opacity-50">{error}</p>
-        <p className="text-xs opacity-40">// PRESIGNED URL MAY HAVE EXPIRED</p>
+        {error.toLowerCase().includes("expired") && (
+          <p className="text-xs opacity-40">// PRESIGNED URL MAY HAVE EXPIRED</p>
+        )}
       </div>
     );
   }

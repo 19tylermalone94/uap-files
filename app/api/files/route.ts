@@ -155,7 +155,7 @@ function keyToType(key: string): "pdf" | "video" | "image" {
 }
 
 function keyToId(key: string): string {
-  return encodeURIComponent(key).replace(/%/g, "-").toLowerCase();
+  return Buffer.from(key).toString("base64url");
 }
 
 export async function GET() {
