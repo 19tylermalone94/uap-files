@@ -113,7 +113,7 @@ export default function VideoViewer({ url, fileName }: VideoViewerProps) {
             background: "rgba(0,0,0,0.7)",
             border: "1px solid rgba(255,60,60,0.4)",
             fontFamily: "'Share Tech Mono', monospace",
-            fontSize: "0.6rem",
+            fontSize: "0.72rem",
             letterSpacing: "0.15em",
             color: "var(--redacted)",
           }}
@@ -136,8 +136,8 @@ export default function VideoViewer({ url, fileName }: VideoViewerProps) {
           className="absolute top-3 right-3 z-20"
           style={{
             fontFamily: "'Share Tech Mono', monospace",
-            fontSize: "0.6rem",
-            color: "rgba(245,166,35,0.3)",
+            fontSize: "0.7rem",
+            color: "rgba(245,166,35,0.6)",
             letterSpacing: "0.08em",
           }}
         >
@@ -197,7 +197,7 @@ export default function VideoViewer({ url, fileName }: VideoViewerProps) {
             style={{
               fontFamily: "'Share Tech Mono', monospace",
               fontSize: "0.65rem",
-              color: "rgba(245,166,35,0.6)",
+              color: "rgba(245,166,35,0.85)",
               minWidth: "36px",
             }}
           >
@@ -244,7 +244,7 @@ export default function VideoViewer({ url, fileName }: VideoViewerProps) {
             style={{
               fontFamily: "'Share Tech Mono', monospace",
               fontSize: "0.65rem",
-              color: "rgba(245,166,35,0.4)",
+              color: "rgba(245,166,35,0.7)",
               minWidth: "36px",
               textAlign: "right",
             }}

@@ -74,8 +74,8 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
           className="absolute top-2 left-2 text-xs"
           style={{
             fontFamily: "'Share Tech Mono', monospace",
-            color: "rgba(0,0,0,0.4)",
-            fontSize: "0.6rem",
+            color: "rgba(0,0,0,0.6)",
+            fontSize: "0.7rem",
             letterSpacing: "0.05em",
           }}
         >
@@ -88,7 +88,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
             style={{
               background: "var(--stamp-red)",
               color: "#fff",
-              fontSize: "0.55rem",
+              fontSize: "0.65rem",
               letterSpacing: "0.1em",
               animation: "pulseGlow 2s ease-in-out infinite",
               boxShadow: "0 0 6px var(--stamp-red)",
@@ -127,7 +127,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
           <div className="flex items-center justify-between mt-3">
             <span
               className="text-xs"
-              style={{ color: "rgba(0,0,0,0.4)", fontFamily: "monospace", fontSize: "0.6rem" }}
+              style={{ color: "rgba(0,0,0,0.6)", fontFamily: "monospace", fontSize: "0.7rem" }}
             >
               {formatSize(file.size)}
             </span>
@@ -136,9 +136,9 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
                 className="text-xs px-1 py-0.5"
                 style={{
                   background: "rgba(0,0,0,0.1)",
-                  color: "rgba(0,0,0,0.5)",
+                  color: "rgba(0,0,0,0.65)",
                   fontFamily: "monospace",
-                  fontSize: "0.6rem",
+                  fontSize: "0.7rem",
                   letterSpacing: "0.05em",
                 }}
               >
@@ -204,7 +204,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
         {/* Case # */}
         <div
           className="absolute top-2 left-2 z-10"
-          style={{ fontFamily: "monospace", color: "rgba(245,166,35,0.5)", fontSize: "0.6rem", letterSpacing: "0.05em" }}
+          style={{ fontFamily: "monospace", color: "rgba(245,166,35,0.8)", fontSize: "0.7rem", letterSpacing: "0.05em" }}
         >
           CASE #{file.id.slice(-6).toUpperCase()}
         </div>
@@ -215,7 +215,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
             style={{
               background: "var(--stamp-red)",
               color: "#fff",
-              fontSize: "0.55rem",
+              fontSize: "0.65rem",
               letterSpacing: "0.1em",
               animation: "pulseGlow 2s ease-in-out infinite",
               boxShadow: "0 0 6px var(--stamp-red)",
@@ -279,7 +279,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
             {file.name}
           </p>
           <div className="flex items-center justify-between">
-            <span style={{ color: "rgba(245,166,35,0.5)", fontFamily: "monospace", fontSize: "0.6rem" }}>
+            <span style={{ color: "rgba(245,166,35,0.8)", fontFamily: "monospace", fontSize: "0.7rem" }}>
               {formatSize(file.size)}
             </span>
             {file.duration && (
@@ -290,7 +290,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
                   border: "1px solid rgba(245,166,35,0.3)",
                   color: "var(--amber)",
                   fontFamily: "monospace",
-                  fontSize: "0.6rem",
+                  fontSize: "0.7rem",
                   letterSpacing: "0.05em",
                 }}
               >
@@ -339,7 +339,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
       {/* Case # */}
       <div
         className="absolute top-2 left-2 z-10"
-        style={{ fontFamily: "monospace", color: "rgba(0,255,157,0.5)", fontSize: "0.6rem", letterSpacing: "0.05em" }}
+        style={{ fontFamily: "monospace", color: "rgba(0,255,157,0.8)", fontSize: "0.7rem", letterSpacing: "0.05em" }}
       >
         CASE #{file.id.slice(-6).toUpperCase()}
       </div>
@@ -350,7 +350,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
           style={{
             background: "var(--stamp-red)",
             color: "#fff",
-            fontSize: "0.55rem",
+            fontSize: "0.65rem",
             letterSpacing: "0.1em",
             animation: "pulseGlow 2s ease-in-out infinite",
             boxShadow: "0 0 6px var(--stamp-red)",
@@ -423,7 +423,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
           {file.name}
         </p>
         <div className="flex items-center justify-between">
-          <span style={{ color: "rgba(0,255,157,0.4)", fontFamily: "monospace", fontSize: "0.6rem" }}>
+          <span style={{ color: "rgba(0,255,157,0.7)", fontFamily: "monospace", fontSize: "0.7rem" }}>
             {formatSize(file.size)}
           </span>
           <span
@@ -431,9 +431,9 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
             style={{
               background: "rgba(0,255,157,0.06)",
               border: "1px solid rgba(0,255,157,0.2)",
-              color: "rgba(0,255,157,0.6)",
+              color: "rgba(0,255,157,0.85)",
               fontFamily: "monospace",
-              fontSize: "0.6rem",
+              fontSize: "0.7rem",
               letterSpacing: "0.05em",
             }}
           >

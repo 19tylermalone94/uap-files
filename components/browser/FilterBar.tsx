@@ -102,7 +102,7 @@ export default function FilterBar({ onFiltersChange }: FilterBarProps) {
       <span
         className="text-xs tracking-widest"
         style={{
-          color: checked ? `var(--${color})` : "rgba(0,255,157,0.4)",
+          color: checked ? `var(--${color})` : "rgba(0,255,157,0.65)",
           transition: "color 0.15s",
           letterSpacing: "0.15em",
         }}
@@ -161,7 +161,7 @@ export default function FilterBar({ onFiltersChange }: FilterBarProps) {
           {/* File type */}
           <div>
             <p
-              className="text-xs mb-3 tracking-widest opacity-50"
+              className="text-xs mb-3 tracking-widest opacity-70"
               style={{ fontFamily: "'Share Tech Mono', monospace", letterSpacing: "0.15em" }}
             >
               // FILE TYPE
@@ -218,14 +218,14 @@ export default function FilterBar({ onFiltersChange }: FilterBarProps) {
           {/* Keyword */}
           <div>
             <p
-              className="text-xs mb-2 opacity-50 tracking-widest"
+              className="text-xs mb-2 opacity-70 tracking-widest"
               style={{ fontFamily: "'Share Tech Mono', monospace", letterSpacing: "0.15em" }}
             >
               // KEYWORD SEARCH
             </p>
             <div className="flex items-center gap-2">
               <span
-                className="text-xs opacity-40 shrink-0"
+                className="text-xs opacity-65 shrink-0"
                 style={{ fontFamily: "'Share Tech Mono', monospace", color: "var(--terminal)" }}
               >
                 &gt;_
@@ -249,7 +249,7 @@ export default function FilterBar({ onFiltersChange }: FilterBarProps) {
             style={{
               fontFamily: "'Share Tech Mono', monospace",
               border: "1px solid rgba(255,60,60,0.2)",
-              color: "rgba(255,60,60,0.5)",
+              color: "rgba(255,60,60,0.75)",
               letterSpacing: "0.15em",
             }}
             onMouseEnter={(e) => {
@@ -258,7 +258,7 @@ export default function FilterBar({ onFiltersChange }: FilterBarProps) {
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,60,60,0.2)";
-              (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,60,60,0.5)";
+              (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,60,60,0.75)";
             }}
           >
             [ CLEAR ALL FILTERS ]

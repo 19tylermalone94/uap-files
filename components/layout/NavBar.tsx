@@ -53,8 +53,8 @@ export default function NavBar() {
           >
             PROJECT{" "}
             <span className="text-amber">LOOKING GLASS</span>
-            <span className="text-terminal/40 mx-1">//</span>
-            <span className="hidden sm:inline text-terminal/70">
+            <span className="text-terminal/60 mx-1">//</span>
+            <span className="hidden sm:inline text-terminal/90">
               DECLASSIFIED FILES
             </span>
           </span>
@@ -64,7 +64,7 @@ export default function NavBar() {
         <div className="flex items-center gap-4 md:gap-6">
           <Link
             href="/files"
-            className="text-terminal/60 hover:text-terminal text-xs tracking-widest transition-colors hidden sm:block"
+            className="text-terminal/80 hover:text-terminal text-xs tracking-widest transition-colors hidden sm:block"
             style={{ fontFamily: "'Share Tech Mono', monospace" }}
           >
             [ FILES ]
@@ -75,7 +75,7 @@ export default function NavBar() {
               className="w-2 h-2 rounded-full bg-redacted dot-pulse"
               style={{ boxShadow: "0 0 6px var(--redacted)" }}
             />
-            <span className="text-xs text-terminal/50 tracking-widest hidden md:block">
+            <span className="text-xs text-terminal/75 tracking-widest hidden md:block">
               LIVE FEED ACTIVE
             </span>
           </div>

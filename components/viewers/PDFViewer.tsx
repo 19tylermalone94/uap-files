@@ -57,9 +57,9 @@ export default function PDFViewer({ url, fileName }: PDFViewerProps) {
       >
         <div style={{ fontSize: "2rem", opacity: 0.5 }}>⚠</div>
         <p className="text-sm tracking-widest">DOCUMENT LOAD ERROR</p>
-        <p className="text-xs opacity-50">{error}</p>
+        <p className="text-xs opacity-80">{error}</p>
         {error.toLowerCase().includes("expired") && (
-          <p className="text-xs opacity-40">// PRESIGNED URL MAY HAVE EXPIRED</p>
+          <p className="text-xs opacity-65">// PRESIGNED URL MAY HAVE EXPIRED</p>
         )}
       </div>
     );
@@ -151,8 +151,8 @@ export default function PDFViewer({ url, fileName }: PDFViewerProps) {
           <span
             style={{
               fontFamily: "'Share Tech Mono', monospace",
-              color: "rgba(0,255,157,0.5)",
-              fontSize: "0.7rem",
+              color: "rgba(0,255,157,0.75)",
+              fontSize: "0.75rem",
               minWidth: "50px",
               textAlign: "center",
             }}
@@ -226,8 +226,8 @@ export default function PDFViewer({ url, fileName }: PDFViewerProps) {
           className="w-full text-center"
           style={{
             fontFamily: "'Share Tech Mono', monospace",
-            fontSize: "0.65rem",
-            color: "rgba(0,255,157,0.3)",
+            fontSize: "0.75rem",
+            color: "rgba(0,255,157,0.6)",
             letterSpacing: "0.1em",
           }}
         >

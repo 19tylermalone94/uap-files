@@ -80,8 +80,8 @@ export default function FileViewerPage() {
             href="/files"
             style={{
               fontFamily: "'Share Tech Mono', monospace",
-              fontSize: "0.7rem",
-              color: "rgba(0,255,157,0.5)",
+              fontSize: "0.75rem",
+              color: "rgba(0,255,157,0.75)",
               letterSpacing: "0.15em",
               textDecoration: "none",
               display: "inline-flex",
@@ -93,7 +93,7 @@ export default function FileViewerPage() {
               ((e.currentTarget as HTMLAnchorElement).style.color = "var(--terminal)")
             }
             onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(0,255,157,0.5)")
+              ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(0,255,157,0.75)")
             }
           >
             &lt; BACK TO FILES
@@ -121,7 +121,7 @@ export default function FileViewerPage() {
             }}
           >
             <p className="text-lg tracking-widest mb-2">FILE ACCESS DENIED</p>
-            <p style={{ fontSize: "0.7rem", opacity: 0.5 }}>{error}</p>
+            <p style={{ fontSize: "0.75rem", opacity: 0.8 }}>{error}</p>
           </div>
         )}
 
@@ -138,14 +138,14 @@ export default function FileViewerPage() {
                   <div
                     style={{
                       fontFamily: "'Share Tech Mono', monospace",
-                      fontSize: "0.65rem",
-                      color: "rgba(0,255,157,0.35)",
+                      fontSize: "0.75rem",
+                      color: "rgba(0,255,157,0.65)",
                       letterSpacing: "0.12em",
                       marginBottom: "8px",
                     }}
                   >
                     &gt; LOOKING_GLASS / ALL_FILES /{" "}
-                    <span style={{ color: "rgba(0,255,157,0.6)" }}>
+                    <span style={{ color: "rgba(0,255,157,0.9)" }}>
                       {meta.id.toUpperCase()}
                     </span>
                   </div>
@@ -226,10 +226,10 @@ export default function FileViewerPage() {
                   }}
                 >
                   <div className="mb-3">[ MOCK MODE ]</div>
-                  <p style={{ fontSize: "0.65rem", opacity: 0.6 }}>
+                  <p style={{ fontSize: "0.72rem", opacity: 0.8 }}>
                     // S3 NOT CONFIGURED — NO PRESIGNED URL AVAILABLE
                   </p>
-                  <p style={{ fontSize: "0.65rem", opacity: 0.4, marginTop: "4px" }}>
+                  <p style={{ fontSize: "0.72rem", opacity: 0.65, marginTop: "4px" }}>
                     // SET S3_BUCKET_NAME, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY IN .env.local
                   </p>
 
@@ -300,8 +300,8 @@ export default function FileViewerPage() {
               style={{
                 borderTop: "1px solid rgba(0,255,157,0.08)",
                 fontFamily: "'Share Tech Mono', monospace",
-                fontSize: "0.6rem",
-                color: "rgba(0,255,157,0.25)",
+                fontSize: "0.72rem",
+                color: "rgba(0,255,157,0.55)",
                 letterSpacing: "0.1em",
               }}
             >
@@ -342,7 +342,7 @@ function MetaBadge({
         background: "rgba(0,255,157,0.03)",
       }}
     >
-      <span style={{ color: "rgba(0,255,157,0.35)", fontSize: "0.55rem" }}>
+      <span style={{ color: "rgba(0,255,157,0.65)", fontSize: "0.65rem" }}>
         {label}:
       </span>
       <span style={{ color }}>{value}</span>
