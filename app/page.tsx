@@ -137,7 +137,7 @@ export default function HomePage() {
               background: "rgba(192,57,43,0.1)",
               border: "1px solid rgba(192,57,43,0.4)",
               fontFamily: "'Share Tech Mono', monospace",
-              fontSize: "0.65rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.3em",
               color: "var(--stamp-red)",
               boxShadow: "0 0 10px rgba(192,57,43,0.15)",
@@ -218,8 +218,8 @@ export default function HomePage() {
             className="mb-10"
             style={{
               fontFamily: "'Share Tech Mono', monospace",
-              fontSize: "clamp(0.7rem, 2vw, 0.95rem)",
-              color: "rgba(0,255,157,0.6)",
+              fontSize: "clamp(0.8rem, 2vw, 1rem)",
+              color: "rgba(0,255,157,0.85)",
               letterSpacing: "0.15em",
             }}
           >
@@ -234,8 +234,8 @@ export default function HomePage() {
             className="mb-10 flex flex-col items-center gap-2"
             style={{
               fontFamily: "'Share Tech Mono', monospace",
-              fontSize: "0.65rem",
-              color: "rgba(0,255,157,0.35)",
+              fontSize: "0.75rem",
+              color: "rgba(0,255,157,0.65)",
               letterSpacing: "0.1em",
             }}
           >
@@ -281,8 +281,8 @@ export default function HomePage() {
             className="mt-6"
             style={{
               fontFamily: "'Share Tech Mono', monospace",
-              fontSize: "0.6rem",
-              color: "rgba(0,255,157,0.2)",
+              fontSize: "0.72rem",
+              color: "rgba(0,255,157,0.55)",
               letterSpacing: "0.12em",
             }}
           >
@@ -305,8 +305,8 @@ export default function HomePage() {
             <span
               style={{
                 fontFamily: "'Share Tech Mono', monospace",
-                fontSize: "0.6rem",
-                color: "rgba(0,255,157,0.35)",
+                fontSize: "0.7rem",
+                color: "rgba(0,255,157,0.6)",
                 letterSpacing: "0.1em",
                 whiteSpace: "nowrap",
               }}

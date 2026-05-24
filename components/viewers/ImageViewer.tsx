@@ -102,8 +102,8 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
                 background: "rgba(0,0,0,0.6)",
                 border: "1px solid rgba(0,255,157,0.2)",
                 fontFamily: "'Share Tech Mono', monospace",
-                fontSize: "0.6rem",
-                color: "rgba(0,255,157,0.6)",
+                fontSize: "0.72rem",
+                color: "rgba(0,255,157,0.85)",
                 letterSpacing: "0.1em",
               }}
             >
@@ -122,7 +122,7 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
         }}
       >
         <div
-          className="text-xs mb-3 opacity-50 tracking-widest"
+          className="text-xs mb-3 opacity-75 tracking-widest"
           style={{
             fontFamily: "'Share Tech Mono', monospace",
             color: "var(--terminal)",
@@ -140,8 +140,8 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
               <span
                 style={{
                   fontFamily: "'Share Tech Mono', monospace",
-                  fontSize: "0.65rem",
-                  color: "rgba(0,255,157,0.4)",
+                  fontSize: "0.75rem",
+                  color: "rgba(0,255,157,0.65)",
                   minWidth: "110px",
                   letterSpacing: "0.1em",
                 }}
@@ -151,8 +151,8 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
               <span
                 style={{
                   fontFamily: "'Share Tech Mono', monospace",
-                  fontSize: "0.65rem",
-                  color: "rgba(0,255,157,0.7)",
+                  fontSize: "0.75rem",
+                  color: "rgba(0,255,157,0.9)",
                   letterSpacing: "0.05em",
                 }}
               >

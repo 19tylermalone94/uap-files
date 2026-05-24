@@ -38,7 +38,7 @@ function ListViewTable({ files }: { files: FileRecord[] }) {
           gridTemplateColumns: "80px 1fr 70px 80px 110px 100px",
           fontFamily: "'Share Tech Mono', monospace",
           letterSpacing: "0.1em",
-          color: "rgba(0,255,157,0.4)",
+          color: "rgba(0,255,157,0.65)",
           borderBottom: "1px solid rgba(0,255,157,0.1)",
           background: "rgba(0,255,157,0.03)",
           gap: "8px",
@@ -57,7 +57,7 @@ function ListViewTable({ files }: { files: FileRecord[] }) {
           className="py-12 text-center"
           style={{
             fontFamily: "'Share Tech Mono', monospace",
-            color: "rgba(0,255,157,0.3)",
+            color: "rgba(0,255,157,0.65)",
             fontSize: "0.75rem",
             letterSpacing: "0.15em",
           }}
@@ -104,8 +104,8 @@ function ListViewTable({ files }: { files: FileRecord[] }) {
         >
           <span
             style={{
-              color: "rgba(0,255,157,0.4)",
-              fontSize: "0.6rem",
+              color: "rgba(0,255,157,0.65)",
+              fontSize: "0.7rem",
             }}
           >
             #{file.id.slice(-6).toUpperCase()}
@@ -128,7 +128,7 @@ function ListViewTable({ files }: { files: FileRecord[] }) {
                 style={{
                   background: "var(--stamp-red)",
                   color: "#fff",
-                  fontSize: "0.5rem",
+                  fontSize: "0.65rem",
                   letterSpacing: "0.1em",
                   verticalAlign: "middle",
                 }}
@@ -139,23 +139,23 @@ function ListViewTable({ files }: { files: FileRecord[] }) {
           </span>
           <span
             style={{
-              color: "rgba(0,255,157,0.5)",
-              fontSize: "0.6rem",
+              color: "rgba(0,255,157,0.75)",
+              fontSize: "0.7rem",
               textTransform: "uppercase",
             }}
           >
             {file.type}
           </span>
-          <span style={{ color: "rgba(0,255,157,0.4)", fontSize: "0.6rem" }}>
+          <span style={{ color: "rgba(0,255,157,0.65)", fontSize: "0.7rem" }}>
             {formatSize(file.size)}
           </span>
-          <span style={{ color: "rgba(0,255,157,0.4)", fontSize: "0.6rem" }}>
+          <span style={{ color: "rgba(0,255,157,0.65)", fontSize: "0.7rem" }}>
             {file.releaseDate === "may-8" ? "MAY 08 2025" : "MAY 22 2025"}
           </span>
           <span
             style={{
               color: "var(--terminal)",
-              fontSize: "0.6rem",
+              fontSize: "0.7rem",
               letterSpacing: "0.08em",
               textShadow: "0 0 6px rgba(0,255,157,0.4)",
             }}
@@ -248,8 +248,8 @@ export default function FilesPage() {
               <div
                 style={{
                   fontFamily: "'Share Tech Mono', monospace",
-                  fontSize: "0.7rem",
-                  color: "rgba(0,255,157,0.4)",
+                  fontSize: "0.75rem",
+                  color: "rgba(0,255,157,0.65)",
                   letterSpacing: "0.15em",
                   marginBottom: "4px",
                 }}
@@ -281,8 +281,8 @@ export default function FilesPage() {
             >
               <span
                 style={{
-                  fontSize: "0.65rem",
-                  color: "rgba(0,255,157,0.5)",
+                  fontSize: "0.72rem",
+                  color: "rgba(0,255,157,0.75)",
                   letterSpacing: "0.15em",
                 }}
               >
@@ -301,8 +301,8 @@ export default function FilesPage() {
               </span>
               <span
                 style={{
-                  fontSize: "0.65rem",
-                  color: "rgba(0,255,157,0.3)",
+                  fontSize: "0.72rem",
+                  color: "rgba(0,255,157,0.6)",
                   letterSpacing: "0.1em",
                 }}
               >
@@ -319,11 +319,11 @@ export default function FilesPage() {
                 className="mr-3"
                 style={{
                   fontFamily: "'Share Tech Mono', monospace",
-                  fontSize: "0.65rem",
+                  fontSize: "0.72rem",
                   letterSpacing: "0.12em",
                   padding: "4px 10px",
-                  border: "1px solid rgba(0,255,157,0.15)",
-                  color: "rgba(0,255,157,0.4)",
+                  border: "1px solid rgba(0,255,157,0.25)",
+                  color: "rgba(0,255,157,0.65)",
                   background: "transparent",
                   cursor: "pointer",
                 }}
@@ -355,8 +355,8 @@ export default function FilesPage() {
               className="hidden md:flex items-center gap-4"
               style={{
                 fontFamily: "'Share Tech Mono', monospace",
-                fontSize: "0.6rem",
-                color: "rgba(0,255,157,0.3)",
+                fontSize: "0.72rem",
+                color: "rgba(0,255,157,0.6)",
                 letterSpacing: "0.08em",
               }}
             >
@@ -427,7 +427,7 @@ export default function FilesPage() {
                 }}
               >
                 <p className="mb-2">CONNECTION ERROR</p>
-                <p style={{ fontSize: "0.65rem", opacity: 0.5 }}>{error}</p>
+                <p style={{ fontSize: "0.72rem", opacity: 0.8 }}>{error}</p>
               </div>
             )}
 
