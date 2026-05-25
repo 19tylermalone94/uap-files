@@ -31,6 +31,11 @@ function formatSize(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
+const RELEASE_DATE_LABELS: Record<string, string> = {
+  "may-8": "MAY 8, 2025",
+  "may-22": "MAY 22, 2025",
+};
+
 export default function FileViewerPage() {
   const params = useParams();
   const id = decodeURIComponent(params.id as string);
@@ -182,7 +187,7 @@ export default function FileViewerPage() {
                     <MetaBadge
                       label="RELEASE"
                       value={
-                        meta.releaseDate === "may-8" ? "MAY 8, 2025" : "MAY 22, 2025"
+                        RELEASE_DATE_LABELS[meta.releaseDate] ?? meta.releaseDate.toUpperCase()
                       }
                     />
                     <MetaBadge
