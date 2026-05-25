@@ -321,7 +321,6 @@ export default function FileViewerPage() {
                   : "UNKNOWN"}
               </span>
               <span>KEY: {meta.key}</span>
-              <span>FOIA COMPLIANT: YES</span>
             </div>
           </>
         )}
