@@ -6,6 +6,12 @@ import { motion } from "framer-motion";
 import FileTypeIcon from "./FileTypeIcon";
 import type { FileRecord } from "@/types";
 
+const RELEASE_TIMESTAMPS: Record<"may-8" | "may-22", number> = {
+  "may-8": new Date("2026-05-08").getTime(),
+  "may-22": new Date("2026-05-22").getTime(),
+};
+const NEW_BADGE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+
 interface FileCardProps {
   file: FileRecord;
   index?: number;
@@ -35,7 +41,8 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
     }, 300);
   };
 
-  const isNew = file.releaseDate === "may-22";
+  const isNew =
+    Date.now() - RELEASE_TIMESTAMPS[file.releaseDate] < NEW_BADGE_TTL_MS;
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
