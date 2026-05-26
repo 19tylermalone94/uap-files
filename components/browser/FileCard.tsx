@@ -86,7 +86,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
             letterSpacing: "0.05em",
           }}
         >
-          CASE #{file.id.slice(-6).toUpperCase()}
+          CASE #{file.id.slice(-8).toUpperCase()}
         </div>
 
         {isNew && (
@@ -213,7 +213,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
           className="absolute top-2 left-2 z-10"
           style={{ fontFamily: "monospace", color: "rgba(245,166,35,0.8)", fontSize: "0.7rem", letterSpacing: "0.05em" }}
         >
-          CASE #{file.id.slice(-6).toUpperCase()}
+          CASE #{file.id.slice(-8).toUpperCase()}
         </div>
 
         {isNew && (
@@ -348,7 +348,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
         className="absolute top-2 left-2 z-10"
         style={{ fontFamily: "monospace", color: "rgba(0,255,157,0.8)", fontSize: "0.7rem", letterSpacing: "0.05em" }}
       >
-        CASE #{file.id.slice(-6).toUpperCase()}
+        CASE #{file.id.slice(-8).toUpperCase()}
       </div>
 
       {isNew && (
