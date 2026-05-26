@@ -390,24 +390,6 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
           }}
         />
 
-        {/* CLASSIFIED watermark */}
-        <div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ opacity: hovering ? 0.05 : 0.12 }}
-        >
-          <span
-            style={{
-              fontFamily: "'Special Elite', cursive",
-              color: "var(--stamp-red)",
-              fontSize: "1.1rem",
-              letterSpacing: "0.3em",
-              transform: "rotate(-20deg)",
-              fontWeight: "bold",
-            }}
-          >
-            CLASSIFIED
-          </span>
-        </div>
       </div>
 
       <div className="p-3">
