@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import FileTypeIcon from "./FileTypeIcon";
+import { formatSize, formatDuration } from "@/lib/format";
 import type { FileRecord } from "@/types";
 
 const RELEASE_TIMESTAMPS: Record<"may-8" | "may-22", number> = {
@@ -17,17 +18,6 @@ interface FileCardProps {
   index?: number;
 }
 
-function formatSize(bytes: number): string {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-}
-
-function formatDuration(seconds: number): string {
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  return `${m}:${s.toString().padStart(2, "0")}`;
-}
 
 export default function FileCard({ file, index = 0 }: FileCardProps) {
   const router = useRouter();
