@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import GlitchText from "@/components/ui/GlitchText";
 import StaticNoise from "@/components/ui/StaticNoise";
@@ -56,6 +56,21 @@ export default function HomePage() {
     return () => clearTimeout(t);
   }, []);
 
+  const stars = useMemo(
+    () =>
+      Array.from({ length: 60 }, (_, i) => ({
+        width: 1 + Math.random() * 2,
+        height: 1 + Math.random() * 2,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        opacity: 0.1 + Math.random() * 0.4,
+        duration: 2 + Math.random() * 4,
+        delay: Math.random() * 3,
+        isAccent: i % 5 === 0,
+      })),
+    []
+  );
+
   const handleAccess = () => {
     setStaticActive(true);
   };
@@ -99,23 +114,22 @@ export default function HomePage() {
 
         {/* Star field dots */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {Array.from({ length: 60 }).map((_, i) => (
+          {stars.map((star, i) => (
             <div
               key={i}
               className="absolute rounded-full"
               style={{
-                width: `${1 + Math.random() * 2}px`,
-                height: `${1 + Math.random() * 2}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                background: i % 5 === 0 ? "var(--terminal)" : "#fff",
-                opacity: 0.1 + Math.random() * 0.4,
-                boxShadow:
-                  i % 5 === 0
-                    ? "0 0 4px var(--terminal)"
-                    : "0 0 2px rgba(255,255,255,0.5)",
-                animation: `cursorBlink ${2 + Math.random() * 4}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 3}s`,
+                width: `${star.width}px`,
+                height: `${star.height}px`,
+                left: `${star.left}%`,
+                top: `${star.top}%`,
+                background: star.isAccent ? "var(--terminal)" : "#fff",
+                opacity: star.opacity,
+                boxShadow: star.isAccent
+                  ? "0 0 4px var(--terminal)"
+                  : "0 0 2px rgba(255,255,255,0.5)",
+                animation: `cursorBlink ${star.duration}s ease-in-out infinite`,
+                animationDelay: `${star.delay}s`,
               }}
             />
           ))}
