@@ -50,10 +50,24 @@ export default function HomePage() {
   const router = useRouter();
   const [staticActive, setStaticActive] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [fileCounts, setFileCounts] = useState<{ pdf: number; video: number; image: number } | null>(null);
 
   useEffect(() => {
     const t = setTimeout(() => setShowContent(true), 300);
     return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/files")
+      .then((r) => r.json())
+      .then((files: { type: string }[]) => {
+        setFileCounts({
+          pdf: files.filter((f) => f.type === "pdf").length,
+          video: files.filter((f) => f.type === "video").length,
+          image: files.filter((f) => f.type === "image").length,
+        });
+      })
+      .catch(() => {});
   }, []);
 
   const stars = useMemo(
@@ -253,7 +267,7 @@ export default function HomePage() {
               letterSpacing: "0.1em",
             }}
           >
-            <span>DOCUMENTS RELEASED: <span style={{ color: "var(--amber)" }}>247</span> // VIDEOS: <span style={{ color: "var(--amber)" }}>12</span> // IMAGES: <span style={{ color: "var(--amber)" }}>38</span></span>
+            <span>DOCUMENTS RELEASED: <span style={{ color: "var(--amber)" }}>{fileCounts ? fileCounts.pdf : "..."}</span> // VIDEOS: <span style={{ color: "var(--amber)" }}>{fileCounts ? fileCounts.video : "..."}</span> // IMAGES: <span style={{ color: "var(--amber)" }}>{fileCounts ? fileCounts.image : "..."}</span></span>
             <span>ORIGIN: <span style={{ background: "#000", padding: "0 4px" }}>████████████</span> // AUTHORIZATION: <span style={{ background: "#000", padding: "0 4px" }}>███████</span></span>
           </div>
 
