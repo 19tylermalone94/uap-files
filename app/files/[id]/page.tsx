@@ -151,7 +151,7 @@ export default function FileViewerPage() {
                   >
                     &gt; LOOKING_GLASS / ALL_FILES /{" "}
                     <span style={{ color: "rgba(0,255,157,0.9)" }}>
-                      {meta.id.toUpperCase()}
+                      {meta.name.toUpperCase()}
                     </span>
                   </div>
 
