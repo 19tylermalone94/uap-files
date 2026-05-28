@@ -8,6 +8,7 @@ import StampBadge from "@/components/ui/StampBadge";
 import TerminalLoader from "@/components/ui/TerminalLoader";
 import VideoViewer from "@/components/viewers/VideoViewer";
 import ImageViewer from "@/components/viewers/ImageViewer";
+import { formatSize, formatDuration } from "@/lib/format";
 import type { FileRecord } from "@/types";
 
 // Dynamic import for PDFViewer to avoid SSR issues with pdfjs
@@ -23,12 +24,6 @@ const PDFViewer = dynamic(() => import("@/components/viewers/PDFViewer"), {
 interface FileData {
   url: string | null;
   metadata: FileRecord;
-}
-
-function formatSize(bytes: number): string {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
 const RELEASE_DATE_LABELS: Record<string, string> = {
@@ -200,11 +195,7 @@ export default function FileViewerPage() {
                     {meta.duration && (
                       <MetaBadge
                         label="DURATION"
-                        value={`${Math.floor(meta.duration / 60)}:${(
-                          meta.duration % 60
-                        )
-                          .toString()
-                          .padStart(2, "0")}`}
+                        value={formatDuration(meta.duration)}
                       />
                     )}
                   </div>

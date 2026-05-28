@@ -6,18 +6,13 @@ import { motion } from "framer-motion";
 import FileGrid from "@/components/browser/FileGrid";
 import FilterBar from "@/components/browser/FilterBar";
 import TerminalLoader from "@/components/ui/TerminalLoader";
+import { formatSize } from "@/lib/format";
 import type { FileRecord } from "@/types";
 
 interface Filters {
   types: Set<"pdf" | "video" | "image">;
   dates: Set<"may-8" | "may-22">;
   keyword: string;
-}
-
-function formatSize(bytes: number): string {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
 function ListViewTable({ files }: { files: FileRecord[] }) {
