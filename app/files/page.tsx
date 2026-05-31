@@ -15,6 +15,11 @@ const RELEASE_TIMESTAMPS: Record<string, number> = {
 };
 const NEW_BADGE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
 
+const RELEASE_DATE_LABELS: Record<string, string> = {
+  "may-8": "MAY 08 2025",
+  "may-22": "MAY 22 2025",
+};
+
 interface Filters {
   types: Set<"pdf" | "video" | "image">;
   dates: Set<"may-8" | "may-22">;
@@ -110,7 +115,7 @@ function ListViewTable({ files }: { files: FileRecord[] }) {
               fontSize: "0.7rem",
             }}
           >
-            #{file.id.slice(-6).toUpperCase()}
+            #{file.id.slice(-8).toUpperCase()}
           </span>
           <span
             className="truncate"
@@ -152,7 +157,7 @@ function ListViewTable({ files }: { files: FileRecord[] }) {
             {formatSize(file.size)}
           </span>
           <span style={{ color: "rgba(0,255,157,0.65)", fontSize: "0.7rem" }}>
-            {file.releaseDate === "may-8" ? "MAY 08 2025" : "MAY 22 2025"}
+            {RELEASE_DATE_LABELS[file.releaseDate] ?? file.releaseDate.toUpperCase()}
           </span>
           <span
             style={{
