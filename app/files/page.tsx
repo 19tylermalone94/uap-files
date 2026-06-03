@@ -16,8 +16,8 @@ const RELEASE_TIMESTAMPS: Record<string, number> = {
 const NEW_BADGE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
 
 const RELEASE_DATE_LABELS: Record<string, string> = {
-  "may-8": "MAY 08 2025",
-  "may-22": "MAY 22 2025",
+  "may-8": "MAY 8, 2025",
+  "may-22": "MAY 22, 2025",
 };
 
 interface Filters {
