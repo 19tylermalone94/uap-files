@@ -80,25 +80,7 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
               onError={() => setError(true)}
             />
 
-            {/* Classified watermark */}
-            <div
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
-              style={{ opacity: 0.06, zIndex: 5 }}
-            >
-              <span
-                style={{
-                  fontFamily: "'Special Elite', cursive",
-                  color: "var(--stamp-red)",
-                  fontSize: "4rem",
-                  letterSpacing: "0.5em",
-                  transform: "rotate(-20deg)",
-                  fontWeight: "bold",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                CLASSIFIED
-              </span>
-            </div>
+
 
             {/* Zoom hint */}
             <div
