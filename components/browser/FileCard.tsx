@@ -373,7 +373,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
           <div className="flex flex-col items-center gap-2 opacity-30">
             <FileTypeIcon type="image" size={32} />
             <span style={{ fontFamily: "monospace", fontSize: "0.6rem", color: "var(--terminal)" }}>
-              CLASSIFIED
+              NO PREVIEW
             </span>
           </div>
         )}
