@@ -11,8 +11,8 @@ interface ImageViewerProps {
 }
 
 const RELEASE_DATE_LABELS: Record<string, string> = {
-  "may-8": "MAY 8, 2025 RELEASE",
-  "may-22": "MAY 22, 2025 RELEASE",
+  "may-8": "MAY 8, 2025",
+  "may-22": "MAY 22, 2025",
 };
 
 export default function ImageViewer({ url, file }: ImageViewerProps) {
