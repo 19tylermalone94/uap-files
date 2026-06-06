@@ -10,8 +10,8 @@ import { formatSize } from "@/lib/format";
 import type { FileRecord } from "@/types";
 
 const RELEASE_TIMESTAMPS: Record<string, number> = {
-  "may-8": new Date("2026-05-08").getTime(),
-  "may-22": new Date("2026-05-22").getTime(),
+  "may-8": new Date("2025-05-08").getTime(),
+  "may-22": new Date("2025-05-22").getTime(),
 };
 const NEW_BADGE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
 
