@@ -61,13 +61,20 @@ export default function NavBar() {
         </Link>
 
         {/* Right: nav links */}
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
           <Link
             href="/files"
             className="text-terminal/80 hover:text-terminal text-xs tracking-widest transition-colors hidden sm:block"
             style={{ fontFamily: "'Share Tech Mono', monospace" }}
           >
             [ FILES ]
+          </Link>
+          <Link
+            href="/cases"
+            className="text-terminal/80 hover:text-terminal text-xs tracking-widest transition-colors hidden sm:block"
+            style={{ fontFamily: "'Share Tech Mono', monospace" }}
+          >
+            [ CASES ]
           </Link>
         </div>
       </div>
