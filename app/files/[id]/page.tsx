@@ -9,6 +9,8 @@ import TerminalLoader from "@/components/ui/TerminalLoader";
 import VideoViewer from "@/components/viewers/VideoViewer";
 import ImageViewer from "@/components/viewers/ImageViewer";
 import { formatSize, formatDuration } from "@/lib/format";
+import { casesByFileId } from "@/lib/cases";
+import { mockFiles } from "@/lib/mock-files";
 import type { FileRecord } from "@/types";
 
 // Dynamic import for PDFViewer to avoid SSR issues with pdfjs
@@ -290,6 +292,9 @@ export default function FileViewerPage() {
               )}
             </div>
 
+            {/* Related files (dossier cluster) */}
+            <RelatedFiles currentId={meta.id} />
+
             {/* Footer metadata */}
             <div
               className="mt-6 pt-4 flex flex-wrap gap-4"
@@ -314,6 +319,138 @@ export default function FileViewerPage() {
             </div>
           </>
         )}
+      </div>
+    </div>
+  );
+}
+
+const TYPE_COLOR: Record<string, string> = {
+  pdf: "var(--paper)",
+  video: "var(--amber)",
+  image: "var(--terminal)",
+};
+
+function RelatedFiles({ currentId }: { currentId: string }) {
+  const caseRecord = casesByFileId[currentId];
+  if (!caseRecord) return null;
+
+  const fileMap: Record<string, FileRecord> = Object.fromEntries(
+    mockFiles.map((f) => [f.id, f])
+  );
+  const related = caseRecord.fileIds
+    .filter((id) => id !== currentId)
+    .map((id) => fileMap[id])
+    .filter(Boolean) as FileRecord[];
+
+  if (related.length === 0) return null;
+
+  return (
+    <div
+      className="mt-8 pt-6"
+      style={{ borderTop: "1px solid rgba(0,255,157,0.1)" }}
+    >
+      <div
+        style={{
+          fontFamily: "'Share Tech Mono', monospace",
+          fontSize: "0.65rem",
+          color: "rgba(0,255,157,0.45)",
+          letterSpacing: "0.18em",
+          marginBottom: "6px",
+        }}
+      >
+        DOSSIER: {caseRecord.id.toUpperCase()}
+      </div>
+      <div
+        className="flex items-center justify-between gap-3 mb-4"
+        style={{ flexWrap: "wrap" }}
+      >
+        <h2
+          style={{
+            fontFamily: "'Bebas Neue', sans-serif",
+            fontSize: "1.1rem",
+            color: "var(--terminal)",
+            letterSpacing: "0.1em",
+            textShadow: "0 0 8px rgba(0,255,157,0.2)",
+          }}
+        >
+          {caseRecord.title} — RELATED FILES
+        </h2>
+        <Link
+          href="/cases"
+          style={{
+            fontFamily: "'Share Tech Mono', monospace",
+            fontSize: "0.62rem",
+            color: "rgba(0,255,157,0.55)",
+            letterSpacing: "0.14em",
+            textDecoration: "none",
+            transition: "color 0.15s",
+          }}
+          onMouseEnter={(e) =>
+            ((e.currentTarget as HTMLAnchorElement).style.color = "var(--terminal)")
+          }
+          onMouseLeave={(e) =>
+            ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(0,255,157,0.55)")
+          }
+        >
+          [ VIEW DOSSIER ]
+        </Link>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        {related.map((f) => {
+          const color = TYPE_COLOR[f.type];
+          return (
+            <Link
+              key={f.id}
+              href={`/files/${encodeURIComponent(f.id)}`}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                padding: "8px 12px",
+                border: `1px solid ${color}25`,
+                background: `${color}05`,
+                textDecoration: "none",
+                transition: "background 0.15s, border-color 0.15s",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = `${color}12`;
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = `${color}50`;
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = `${color}05`;
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = `${color}25`;
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "'Share Tech Mono', monospace",
+                  fontSize: "0.55rem",
+                  padding: "2px 5px",
+                  border: `1px solid ${color}50`,
+                  color,
+                  letterSpacing: "0.1em",
+                  flexShrink: 0,
+                }}
+              >
+                {f.type.toUpperCase()}
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Share Tech Mono', monospace",
+                  fontSize: "0.72rem",
+                  color: `${color}cc`,
+                  letterSpacing: "0.04em",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {f.name.toUpperCase()}
+              </span>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

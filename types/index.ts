@@ -10,3 +10,11 @@ export interface FileRecord {
   duration?: number;
   thumbnailUrl?: string;
 }
+
+export interface CaseRecord {
+  id: string;
+  title: string;
+  summary: string;
+  fileIds: string[];
+  coverImage?: string;
+}
