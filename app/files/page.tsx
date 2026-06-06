@@ -9,12 +9,6 @@ import TerminalLoader from "@/components/ui/TerminalLoader";
 import { formatSize } from "@/lib/format";
 import type { FileRecord } from "@/types";
 
-const RELEASE_TIMESTAMPS: Record<string, number> = {
-  "may-8": new Date("2025-05-08").getTime(),
-  "may-22": new Date("2025-05-22").getTime(),
-};
-const NEW_BADGE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
-
 const RELEASE_DATE_LABELS: Record<string, string> = {
   "may-8": "MAY 8, 2025",
   "may-22": "MAY 22, 2025",
@@ -129,20 +123,6 @@ function ListViewTable({ files }: { files: FileRecord[] }) {
             }}
           >
             {file.name}
-            {Date.now() - (RELEASE_TIMESTAMPS[file.releaseDate] ?? 0) < NEW_BADGE_TTL_MS && (
-              <span
-                className="ml-2 px-1"
-                style={{
-                  background: "var(--stamp-red)",
-                  color: "#fff",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.1em",
-                  verticalAlign: "middle",
-                }}
-              >
-                NEW
-              </span>
-            )}
           </span>
           <span
             style={{

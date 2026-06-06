@@ -7,12 +7,6 @@ import FileTypeIcon from "./FileTypeIcon";
 import { formatSize, formatDuration } from "@/lib/format";
 import type { FileRecord } from "@/types";
 
-const RELEASE_TIMESTAMPS: Record<"may-8" | "may-22", number> = {
-  "may-8": new Date("2026-05-08").getTime(),
-  "may-22": new Date("2026-05-22").getTime(),
-};
-const NEW_BADGE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
-
 interface FileCardProps {
   file: FileRecord;
   index?: number;
@@ -30,9 +24,6 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
       router.push(`/files/${encodeURIComponent(file.id)}`);
     }, 300);
   };
-
-  const isNew =
-    Date.now() - RELEASE_TIMESTAMPS[file.releaseDate] < NEW_BADGE_TTL_MS;
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -78,22 +69,6 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
         >
           CASE #{file.id.slice(-8).toUpperCase()}
         </div>
-
-        {isNew && (
-          <div
-            className="absolute top-2 right-6 text-xs font-bold px-1"
-            style={{
-              background: "var(--stamp-red)",
-              color: "#fff",
-              fontSize: "0.65rem",
-              letterSpacing: "0.1em",
-              animation: "pulseGlow 2s ease-in-out infinite",
-              boxShadow: "0 0 6px var(--stamp-red)",
-            }}
-          >
-            NEW
-          </div>
-        )}
 
         {/* Paper content */}
         <div className="p-4 pt-7">
@@ -205,22 +180,6 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
         >
           CASE #{file.id.slice(-8).toUpperCase()}
         </div>
-
-        {isNew && (
-          <div
-            className="absolute top-2 right-2 z-10 text-xs font-bold px-1"
-            style={{
-              background: "var(--stamp-red)",
-              color: "#fff",
-              fontSize: "0.65rem",
-              letterSpacing: "0.1em",
-              animation: "pulseGlow 2s ease-in-out infinite",
-              boxShadow: "0 0 6px var(--stamp-red)",
-            }}
-          >
-            NEW
-          </div>
-        )}
 
         {/* Video thumbnail area */}
         <div
@@ -340,22 +299,6 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
       >
         CASE #{file.id.slice(-8).toUpperCase()}
       </div>
-
-      {isNew && (
-        <div
-          className="absolute top-2 right-2 z-10 text-xs font-bold px-1"
-          style={{
-            background: "var(--stamp-red)",
-            color: "#fff",
-            fontSize: "0.65rem",
-            letterSpacing: "0.1em",
-            animation: "pulseGlow 2s ease-in-out infinite",
-            boxShadow: "0 0 6px var(--stamp-red)",
-          }}
-        >
-          NEW
-        </div>
-      )}
 
       {/* Image area */}
       <div
