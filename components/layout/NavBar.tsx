@@ -53,7 +53,7 @@ export default function NavBar() {
           >
             PROJECT{" "}
             <span className="text-amber">LOOKING GLASS</span>
-            <span className="text-terminal/60 mx-1">//</span>
+            <span className="text-terminal/60 mx-1">{"//"}</span>
             <span className="hidden sm:inline text-terminal/90">
               DECLASSIFIED FILES
             </span>

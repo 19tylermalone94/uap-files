@@ -164,7 +164,7 @@ export default function FilterBar({ onFiltersChange }: FilterBarProps) {
               className="text-xs mb-3 tracking-widest opacity-70"
               style={{ fontFamily: "'Share Tech Mono', monospace", letterSpacing: "0.15em" }}
             >
-              // FILE TYPE
+              {"// FILE TYPE"}
             </p>
             <div className="space-y-2">
               <CheckRow
@@ -196,7 +196,7 @@ export default function FilterBar({ onFiltersChange }: FilterBarProps) {
               className="text-xs mb-3 opacity-50 tracking-widest"
               style={{ fontFamily: "'Share Tech Mono', monospace", letterSpacing: "0.15em" }}
             >
-              // RELEASE DATE
+              {"// RELEASE DATE"}
             </p>
             <div className="space-y-2">
               <CheckRow
@@ -221,7 +221,7 @@ export default function FilterBar({ onFiltersChange }: FilterBarProps) {
               className="text-xs mb-2 opacity-70 tracking-widest"
               style={{ fontFamily: "'Share Tech Mono', monospace", letterSpacing: "0.15em" }}
             >
-              // KEYWORD SEARCH
+              {"// KEYWORD SEARCH"}
             </p>
             <div className="flex items-center gap-2">
               <span

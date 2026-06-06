@@ -42,7 +42,7 @@ export default function FileGrid({ files }: FileGridProps) {
             opacity: 0.5,
           }}
         >
-          // ADJUST FILTERS TO EXPAND SEARCH
+          {"// ADJUST FILTERS TO EXPAND SEARCH"}
         </p>
       </div>
     );

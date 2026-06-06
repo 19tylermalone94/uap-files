@@ -267,8 +267,8 @@ export default function HomePage() {
               letterSpacing: "0.1em",
             }}
           >
-            <span>DOCUMENTS RELEASED: <span style={{ color: "var(--amber)" }}>{fileCounts ? fileCounts.pdf : "..."}</span> // VIDEOS: <span style={{ color: "var(--amber)" }}>{fileCounts ? fileCounts.video : "..."}</span> // IMAGES: <span style={{ color: "var(--amber)" }}>{fileCounts ? fileCounts.image : "..."}</span></span>
-            <span>ORIGIN: <span style={{ background: "#000", padding: "0 4px" }}>████████████</span> // AUTHORIZATION: <span style={{ background: "#000", padding: "0 4px" }}>███████</span></span>
+            <span>DOCUMENTS RELEASED: <span style={{ color: "var(--amber)" }}>{fileCounts ? fileCounts.pdf : "..."}</span>{" // "}VIDEOS: <span style={{ color: "var(--amber)" }}>{fileCounts ? fileCounts.video : "..."}</span>{" // "}IMAGES: <span style={{ color: "var(--amber)" }}>{fileCounts ? fileCounts.image : "..."}</span></span>
+            <span>ORIGIN: <span style={{ background: "#000", padding: "0 4px" }}>████████████</span>{" // "}AUTHORIZATION: <span style={{ background: "#000", padding: "0 4px" }}>███████</span></span>
           </div>
 
           {/* CTA button */}

@@ -179,7 +179,7 @@ export default function VideoViewer({ url, fileName }: VideoViewerProps) {
           }}
         >
           <p className="text-sm tracking-widest">SIGNAL LOST</p>
-          <p className="text-xs opacity-50">// VIDEO UNAVAILABLE OR STILL CLASSIFIED</p>
+          <p className="text-xs opacity-50">{"// VIDEO UNAVAILABLE OR STILL CLASSIFIED"}</p>
         </div>
       )}
 

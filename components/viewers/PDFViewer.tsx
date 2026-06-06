@@ -59,7 +59,7 @@ export default function PDFViewer({ url, fileName }: PDFViewerProps) {
         <p className="text-sm tracking-widest">DOCUMENT LOAD ERROR</p>
         <p className="text-xs opacity-80">{error}</p>
         {error.toLowerCase().includes("expired") && (
-          <p className="text-xs opacity-65">// PRESIGNED URL MAY HAVE EXPIRED</p>
+          <p className="text-xs opacity-65">{"// PRESIGNED URL MAY HAVE EXPIRED"}</p>
         )}
       </div>
     );
@@ -231,7 +231,7 @@ export default function PDFViewer({ url, fileName }: PDFViewerProps) {
             letterSpacing: "0.1em",
           }}
         >
-          // {fileName} — PAGE {pageNumber} OF {numPages} — ZOOM {Math.round(scale * 100)}%
+          {"// "}{fileName}{" — PAGE "}{pageNumber}{" OF "}{numPages}{" — ZOOM "}{Math.round(scale * 100)}%
         </div>
       )}
     </div>
