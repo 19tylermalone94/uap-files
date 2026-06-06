@@ -225,10 +225,10 @@ export default function FileViewerPage() {
                 >
                   <div className="mb-3">[ MOCK MODE ]</div>
                   <p style={{ fontSize: "0.72rem", opacity: 0.8 }}>
-                    // S3 NOT CONFIGURED — NO PRESIGNED URL AVAILABLE
+                    {"// S3 NOT CONFIGURED — NO PRESIGNED URL AVAILABLE"}
                   </p>
                   <p style={{ fontSize: "0.72rem", opacity: 0.65, marginTop: "4px" }}>
-                    // SET S3_BUCKET_NAME, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY IN .env.local
+                    {"// SET S3_BUCKET_NAME, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY IN .env.local"}
                   </p>
 
                   {/* Show document stub */}

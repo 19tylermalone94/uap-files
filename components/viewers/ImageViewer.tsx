@@ -64,7 +64,7 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
           >
             <div style={{ fontSize: "3rem", opacity: 0.3 }}>▣</div>
             <p className="text-sm tracking-widest">IMAGE UNAVAILABLE</p>
-            <p className="text-xs opacity-50">// PRESIGNED URL MAY HAVE EXPIRED</p>
+            <p className="text-xs opacity-50">{"// PRESIGNED URL MAY HAVE EXPIRED"}</p>
           </div>
         ) : (
           <>
@@ -118,7 +118,7 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
             letterSpacing: "0.2em",
           }}
         >
-          // IMAGE METADATA // UNCLASSIFIED
+          {"// IMAGE METADATA // UNCLASSIFIED"}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
