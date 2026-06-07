@@ -19,7 +19,7 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
     { label: "LOCATION", value: "UNKNOWN // COORDINATES REDACTED" },
     { label: "SOURCE", value: "DECLASSIFIED DOD RECORDS" },
     { label: "DATE", value: file.lastModified ? new Date(file.lastModified).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }) : "UNKNOWN" },
-    { label: "RELEASE", value: RELEASE_DATE_LABELS[file.releaseDate] ?? `${file.releaseDate.toUpperCase()} RELEASE` },
+    { label: "RELEASE", value: RELEASE_DATE_LABELS[file.releaseDate] ?? file.releaseDate.toUpperCase() },
     { label: "CLASSIFICATION", value: "FORMERLY TOP SECRET // NOW DECLASSIFIED" },
     { label: "CASE REF", value: `UAP-${file.id.slice(-8).toUpperCase()}` },
   ];
