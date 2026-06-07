@@ -8,7 +8,7 @@ import StampBadge from "@/components/ui/StampBadge";
 import TerminalLoader from "@/components/ui/TerminalLoader";
 import VideoViewer from "@/components/viewers/VideoViewer";
 import ImageViewer from "@/components/viewers/ImageViewer";
-import { formatSize, formatDuration } from "@/lib/format";
+import { formatSize, formatDuration, RELEASE_DATE_LABELS } from "@/lib/format";
 import { casesByFileId } from "@/lib/cases";
 import { mockFiles } from "@/lib/mock-files";
 import type { FileRecord } from "@/types";
@@ -27,11 +27,6 @@ interface FileData {
   url: string | null;
   metadata: FileRecord;
 }
-
-const RELEASE_DATE_LABELS: Record<string, string> = {
-  "may-8": "MAY 8, 2025",
-  "may-22": "MAY 22, 2025",
-};
 
 export default function FileViewerPage() {
   const params = useParams();

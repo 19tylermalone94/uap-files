@@ -3,17 +3,13 @@
 import { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { RELEASE_DATE_LABELS } from "@/lib/format";
 import type { FileRecord } from "@/types";
 
 interface ImageViewerProps {
   url: string;
   file: FileRecord;
 }
-
-const RELEASE_DATE_LABELS: Record<string, string> = {
-  "may-8": "MAY 8, 2025",
-  "may-22": "MAY 22, 2025",
-};
 
 export default function ImageViewer({ url, file }: ImageViewerProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
