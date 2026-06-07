@@ -6,13 +6,8 @@ import { motion } from "framer-motion";
 import FileGrid from "@/components/browser/FileGrid";
 import FilterBar from "@/components/browser/FilterBar";
 import TerminalLoader from "@/components/ui/TerminalLoader";
-import { formatSize } from "@/lib/format";
+import { formatSize, RELEASE_DATE_LABELS } from "@/lib/format";
 import type { FileRecord } from "@/types";
-
-const RELEASE_DATE_LABELS: Record<string, string> = {
-  "may-8": "MAY 8, 2025",
-  "may-22": "MAY 22, 2025",
-};
 
 interface Filters {
   types: Set<"pdf" | "video" | "image">;
