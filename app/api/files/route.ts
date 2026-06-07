@@ -40,29 +40,35 @@ export async function GET() {
     for (const prefix of ["may-8/", "may-22/"]) {
       const releaseDate = prefix.replace("/", "") as "may-8" | "may-22";
 
-      const command = new ListObjectsV2Command({
-        Bucket: BUCKET,
-        Prefix: prefix,
-      });
+      let continuationToken: string | undefined;
+      do {
+        const response = await client.send(
+          new ListObjectsV2Command({
+            Bucket: BUCKET,
+            Prefix: prefix,
+            ContinuationToken: continuationToken,
+          })
+        );
 
-      const response = await client.send(command);
+        for (const obj of response.Contents || []) {
+          if (!obj.Key || obj.Key === prefix) continue;
 
-      for (const obj of response.Contents || []) {
-        if (!obj.Key || obj.Key === prefix) continue;
+          const name = obj.Key.split("/").pop() || obj.Key;
+          const type = keyToType(obj.Key);
 
-        const name = obj.Key.split("/").pop() || obj.Key;
-        const type = keyToType(obj.Key);
+          allFiles.push({
+            id: keyToId(obj.Key),
+            key: obj.Key,
+            name,
+            type,
+            size: obj.Size || 0,
+            lastModified: obj.LastModified?.toISOString() || "",
+            releaseDate,
+          });
+        }
 
-        allFiles.push({
-          id: keyToId(obj.Key),
-          key: obj.Key,
-          name,
-          type,
-          size: obj.Size || 0,
-          lastModified: obj.LastModified?.toISOString() || "",
-          releaseDate,
-        });
-      }
+        continuationToken = response.NextContinuationToken;
+      } while (continuationToken);
     }
 
     return NextResponse.json(allFiles);
