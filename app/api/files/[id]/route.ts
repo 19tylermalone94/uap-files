@@ -41,7 +41,7 @@ export async function GET(
   try {
     const key = idToKey(id);
     const name = key.split("/").pop() || key;
-    const releaseDate = key.startsWith("may-22/") ? "may-22" : "may-8";
+    const releaseDate = key.split("/")[0] as FileRecord["releaseDate"];
 
     const client = new S3Client({
       region: REGION,
