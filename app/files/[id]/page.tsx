@@ -283,7 +283,7 @@ export default function FileViewerPage() {
               )}
 
               {meta.type === "image" && (
-                <ImageViewer url={url || "https://placehold.co/800x600/050508/00ff9d?text=IMAGE+UNAVAILABLE"} file={meta} />
+                <ImageViewer url={url} file={meta} />
               )}
             </div>
 
