@@ -140,10 +140,12 @@ export default function PDFViewer({ url, fileName }: PDFViewerProps) {
             onMouseEnter={(e) => {
               if (scale > 0.5) {
                 (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--terminal)";
+                (e.currentTarget as HTMLButtonElement).style.background = "rgba(0,255,157,0.1)";
               }
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0,255,157,0.3)";
+              (e.currentTarget as HTMLButtonElement).style.background = "rgba(0,255,157,0.05)";
             }}
           >
             ZOOM −
@@ -166,10 +168,12 @@ export default function PDFViewer({ url, fileName }: PDFViewerProps) {
             onMouseEnter={(e) => {
               if (scale < 2.5) {
                 (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--terminal)";
+                (e.currentTarget as HTMLButtonElement).style.background = "rgba(0,255,157,0.1)";
               }
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0,255,157,0.3)";
+              (e.currentTarget as HTMLButtonElement).style.background = "rgba(0,255,157,0.05)";
             }}
           >
             ZOOM +
