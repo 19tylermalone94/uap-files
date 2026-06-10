@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface StaticNoiseProps {
   active: boolean;
@@ -15,17 +15,24 @@ export default function StaticNoise({
 }: StaticNoiseProps) {
   const [visible, setVisible] = useState(false);
 
+  // Keep a stable ref so the timer callback always calls the latest
+  // onComplete without needing it in the effect dependency array.
+  const onCompleteRef = useRef(onComplete);
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  });
+
   useEffect(() => {
     if (!active) return;
 
     setVisible(true);
     const timeout = setTimeout(() => {
       setVisible(false);
-      onComplete?.();
+      onCompleteRef.current?.();
     }, duration);
 
     return () => clearTimeout(timeout);
-  }, [active, duration, onComplete]);
+  }, [active, duration]);
 
   if (!visible) return null;
 
