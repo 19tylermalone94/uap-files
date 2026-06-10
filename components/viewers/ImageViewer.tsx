@@ -7,13 +7,13 @@ import { RELEASE_DATE_LABELS } from "@/lib/format";
 import type { FileRecord } from "@/types";
 
 interface ImageViewerProps {
-  url: string;
+  url: string | null;
   file: FileRecord;
 }
 
 export default function ImageViewer({ url, file }: ImageViewerProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(!url);
 
   const metadata = [
     { label: "LOCATION", value: "UNKNOWN // COORDINATES REDACTED" },
