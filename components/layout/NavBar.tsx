@@ -7,11 +7,15 @@ export default function NavBar() {
   const [glitch, setGlitch] = useState(false);
 
   useEffect(() => {
+    let glitchTimeout: ReturnType<typeof setTimeout>;
     const interval = setInterval(() => {
       setGlitch(true);
-      setTimeout(() => setGlitch(false), 200);
+      glitchTimeout = setTimeout(() => setGlitch(false), 200);
     }, Math.random() * 5000 + 4000);
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(glitchTimeout);
+    };
   }, []);
 
   return (
