@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import FileTypeIcon from "./FileTypeIcon";
@@ -17,10 +17,17 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
   const router = useRouter();
   const [hovering, setHovering] = useState(false);
   const [accessing, setAccessing] = useState(false);
+  const accessTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (accessTimerRef.current !== null) clearTimeout(accessTimerRef.current);
+    };
+  }, []);
 
   const handleClick = () => {
     setAccessing(true);
-    setTimeout(() => {
+    accessTimerRef.current = setTimeout(() => {
       router.push(`/files/${encodeURIComponent(file.id)}`);
     }, 300);
   };
