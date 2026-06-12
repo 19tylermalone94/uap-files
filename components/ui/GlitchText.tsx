@@ -42,7 +42,10 @@ export default function GlitchText({
     };
 
     scheduleNext();
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+      el.classList.remove("glitching");
+    };
   }, [intervalMs]);
 
   return (
