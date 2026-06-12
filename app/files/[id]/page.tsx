@@ -10,7 +10,7 @@ import VideoViewer from "@/components/viewers/VideoViewer";
 import ImageViewer from "@/components/viewers/ImageViewer";
 import { formatSize, formatDuration, RELEASE_DATE_LABELS } from "@/lib/format";
 import { casesByFileId } from "@/lib/cases";
-import { mockFiles } from "@/lib/mock-files";
+import { mockFilesById } from "@/lib/mock-files";
 import type { FileRecord } from "@/types";
 
 // Dynamic import for PDFViewer to avoid SSR issues with pdfjs
@@ -329,12 +329,9 @@ function RelatedFiles({ currentId }: { currentId: string }) {
   const caseRecord = casesByFileId[currentId];
   if (!caseRecord) return null;
 
-  const fileMap: Record<string, FileRecord> = Object.fromEntries(
-    mockFiles.map((f) => [f.id, f])
-  );
   const related = caseRecord.fileIds
     .filter((id) => id !== currentId)
-    .map((id) => fileMap[id])
+    .map((id) => mockFilesById[id])
     .filter(Boolean) as FileRecord[];
 
   if (related.length === 0) return null;

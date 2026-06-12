@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { cases } from "@/lib/cases";
-import { mockFiles } from "@/lib/mock-files";
+import { mockFilesById } from "@/lib/mock-files";
 import type { FileRecord } from "@/types";
 
 const TYPE_COLOR: Record<string, string> = {
@@ -72,10 +72,6 @@ export default function CasesPage() {
     return () => clearTimeout(t);
   }, []);
 
-  const fileMap: Record<string, FileRecord> = Object.fromEntries(
-    mockFiles.map((f) => [f.id, f])
-  );
-
   return (
     <div
       className="min-h-screen"
@@ -130,7 +126,7 @@ export default function CasesPage() {
         <div className="flex flex-col gap-6">
           {cases.map((c, idx) => {
             const files = c.fileIds
-              .map((id) => fileMap[id])
+              .map((id) => mockFilesById[id])
               .filter(Boolean) as FileRecord[];
 
             return (
