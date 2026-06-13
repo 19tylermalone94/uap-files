@@ -52,7 +52,11 @@ export default function VideoViewer({ url, fileName }: VideoViewerProps) {
   const handleVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
     const v = parseFloat(e.target.value);
     setVolume(v);
-    if (videoRef.current) videoRef.current.volume = v;
+    setMuted(false);
+    if (videoRef.current) {
+      videoRef.current.volume = v;
+      videoRef.current.muted = false;
+    }
   };
 
   const toggleMute = () => {
