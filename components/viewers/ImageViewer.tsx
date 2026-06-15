@@ -66,7 +66,7 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={url}
+              src={url ?? undefined}
               alt={file.name}
               className="max-w-full max-h-full object-contain"
               style={{

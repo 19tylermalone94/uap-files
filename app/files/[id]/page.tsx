@@ -283,7 +283,7 @@ export default function FileViewerPage() {
               )}
 
               {meta.type === "image" && (
-                <ImageViewer url={url} file={meta} />
+                <ImageViewer url={url ?? null} file={meta} />
               )}
             </div>
 
