@@ -92,10 +92,7 @@ function ListViewTable({ files }: { files: FileRecord[] }) {
           }
           role="button"
           tabIndex={0}
-          onKeyDown={(e) =>
-            e.key === "Enter" &&
-            router.push(`/files/${encodeURIComponent(file.id)}`)
-          }
+          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); router.push(`/files/${encodeURIComponent(file.id)}`); } }}
           aria-label={`Open ${file.name}`}
         >
           <span

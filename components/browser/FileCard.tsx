@@ -61,7 +61,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
         onClick={handleClick}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && handleClick()}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}
         aria-label={`Open ${file.name}`}
       >
         {/* CASE # corner badge */}
@@ -177,7 +177,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
         onClick={handleClick}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && handleClick()}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}
         aria-label={`Open ${file.name}`}
       >
         {/* Case # */}
@@ -296,7 +296,7 @@ export default function FileCard({ file, index = 0 }: FileCardProps) {
       onClick={handleClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === "Enter" && handleClick()}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}
       aria-label={`Open ${file.name}`}
     >
       {/* Case # */}

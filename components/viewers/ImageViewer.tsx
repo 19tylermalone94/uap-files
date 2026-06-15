@@ -38,7 +38,7 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
         onClick={() => !error && setLightboxOpen(true)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && !error && setLightboxOpen(true)}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (!error) setLightboxOpen(true); } }}
         aria-label="Click to open full-screen lightbox"
       >
         {/* Scanline overlay */}
