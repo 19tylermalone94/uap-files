@@ -189,137 +189,139 @@ export default function VideoViewer({ url, fileName }: VideoViewerProps) {
         </div>
       )}
 
-      {/* Custom controls bar */}
-      <div
-        className="flex flex-col gap-2 px-3 py-2"
-        style={{
-          background: "rgba(5,5,8,0.95)",
-          borderTop: "1px solid rgba(245,166,35,0.15)",
-        }}
-      >
-        {/* Progress / timeline scrubber */}
-        <div className="relative flex items-center gap-2">
-          <span
-            style={{
-              fontFamily: "'Share Tech Mono', monospace",
-              fontSize: "0.65rem",
-              color: "rgba(245,166,35,0.85)",
-              minWidth: "36px",
-            }}
-          >
-            {formatTime(currentTime)}
-          </span>
-
-          <div className="relative flex-1" style={{ height: "20px" }}>
-            {/* Waveform decoration */}
-            <div
-              className="absolute inset-0 flex items-center gap-px pointer-events-none"
-              style={{ overflow: "hidden" }}
+      {/* Custom controls bar — hidden when video is in error state */}
+      {!error && (
+        <div
+          className="flex flex-col gap-2 px-3 py-2"
+          style={{
+            background: "rgba(5,5,8,0.95)",
+            borderTop: "1px solid rgba(245,166,35,0.15)",
+          }}
+        >
+          {/* Progress / timeline scrubber */}
+          <div className="relative flex items-center gap-2">
+            <span
+              style={{
+                fontFamily: "'Share Tech Mono', monospace",
+                fontSize: "0.65rem",
+                color: "rgba(245,166,35,0.85)",
+                minWidth: "36px",
+              }}
             >
-              {Array.from({ length: 80 }).map((_, i) => {
-                const h = 4 + Math.sin(i * 0.4) * 3 + Math.cos(i * 0.7) * 2;
-                const isPlayed = (i / 80) * 100 <= progress;
-                return (
-                  <div
-                    key={i}
-                    style={{
-                      flex: 1,
-                      height: `${h}px`,
-                      background: isPlayed ? "var(--amber)" : "rgba(245,166,35,0.2)",
-                      transition: "background 0.05s",
-                    }}
-                  />
-                );
-              })}
+              {formatTime(currentTime)}
+            </span>
+
+            <div className="relative flex-1" style={{ height: "20px" }}>
+              {/* Waveform decoration */}
+              <div
+                className="absolute inset-0 flex items-center gap-px pointer-events-none"
+                style={{ overflow: "hidden" }}
+              >
+                {Array.from({ length: 80 }).map((_, i) => {
+                  const h = 4 + Math.sin(i * 0.4) * 3 + Math.cos(i * 0.7) * 2;
+                  const isPlayed = (i / 80) * 100 <= progress;
+                  return (
+                    <div
+                      key={i}
+                      style={{
+                        flex: 1,
+                        height: `${h}px`,
+                        background: isPlayed ? "var(--amber)" : "rgba(245,166,35,0.2)",
+                        transition: "background 0.05s",
+                      }}
+                    />
+                  );
+                })}
+              </div>
+
+              <input
+                type="range"
+                min={0}
+                max={duration || 0}
+                step={0.1}
+                value={currentTime}
+                onChange={handleSeek}
+                className="absolute inset-0 w-full opacity-0 cursor-pointer"
+                style={{ height: "100%" }}
+                aria-label="Video progress"
+              />
             </div>
 
+            <span
+              style={{
+                fontFamily: "'Share Tech Mono', monospace",
+                fontSize: "0.65rem",
+                color: "rgba(245,166,35,0.7)",
+                minWidth: "36px",
+                textAlign: "right",
+              }}
+            >
+              {formatTime(duration)}
+            </span>
+          </div>
+
+          {/* Button row */}
+          <div className="flex items-center gap-1">
+            {/* Play/Pause */}
+            <button
+              onClick={togglePlay}
+              style={{
+                ...controlBtn,
+                border: "1px solid rgba(245,166,35,0.3)",
+                padding: "4px 14px",
+                color: "var(--amber)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--amber)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 0 8px rgba(245,166,35,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(245,166,35,0.3)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+              }}
+              aria-label={playing ? "Pause" : "Play"}
+            >
+              {playing ? "❙❙ PAUSE" : "▶ PLAY"}
+            </button>
+
+            {/* Mute */}
+            <button
+              onClick={toggleMute}
+              style={controlBtn}
+              aria-label={muted ? "Unmute" : "Mute"}
+            >
+              {muted ? "VOL OFF" : "VOL ON"}
+            </button>
+
+            {/* Volume slider */}
             <input
               type="range"
               min={0}
-              max={duration || 0}
-              step={0.1}
-              value={currentTime}
-              onChange={handleSeek}
-              className="absolute inset-0 w-full opacity-0 cursor-pointer"
-              style={{ height: "100%" }}
-              aria-label="Video progress"
+              max={1}
+              step={0.05}
+              value={muted ? 0 : volume}
+              onChange={handleVolume}
+              className="w-16"
+              style={{
+                accentColor: "var(--amber)",
+                cursor: "pointer",
+              }}
+              aria-label="Volume"
             />
+
+            <span className="flex-1" />
+
+            {/* Fullscreen */}
+            <button
+              onClick={toggleFullscreen}
+              style={controlBtn}
+              aria-label={fullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+            >
+              {fullscreen ? "[ EXIT ]" : "[ FULL ]"}
+            </button>
           </div>
-
-          <span
-            style={{
-              fontFamily: "'Share Tech Mono', monospace",
-              fontSize: "0.65rem",
-              color: "rgba(245,166,35,0.7)",
-              minWidth: "36px",
-              textAlign: "right",
-            }}
-          >
-            {formatTime(duration)}
-          </span>
         </div>
-
-        {/* Button row */}
-        <div className="flex items-center gap-1">
-          {/* Play/Pause */}
-          <button
-            onClick={togglePlay}
-            style={{
-              ...controlBtn,
-              border: "1px solid rgba(245,166,35,0.3)",
-              padding: "4px 14px",
-              color: "var(--amber)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--amber)";
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 0 8px rgba(245,166,35,0.3)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(245,166,35,0.3)";
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
-            }}
-            aria-label={playing ? "Pause" : "Play"}
-          >
-            {playing ? "❙❙ PAUSE" : "▶ PLAY"}
-          </button>
-
-          {/* Mute */}
-          <button
-            onClick={toggleMute}
-            style={controlBtn}
-            aria-label={muted ? "Unmute" : "Mute"}
-          >
-            {muted ? "VOL OFF" : "VOL ON"}
-          </button>
-
-          {/* Volume slider */}
-          <input
-            type="range"
-            min={0}
-            max={1}
-            step={0.05}
-            value={muted ? 0 : volume}
-            onChange={handleVolume}
-            className="w-16"
-            style={{
-              accentColor: "var(--amber)",
-              cursor: "pointer",
-            }}
-            aria-label="Volume"
-          />
-
-          <span className="flex-1" />
-
-          {/* Fullscreen */}
-          <button
-            onClick={toggleFullscreen}
-            style={controlBtn}
-            aria-label={fullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-          >
-            {fullscreen ? "[ EXIT ]" : "[ FULL ]"}
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
