@@ -50,7 +50,8 @@ export default function TerminalLoader({
       }, 1800);
       return () => clearTimeout(timeout);
     }
-  }, [charIndex, currentMsg, messages, msgIndex]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [charIndex, currentMsg, msgIndex]);
 
   return (
     <div
