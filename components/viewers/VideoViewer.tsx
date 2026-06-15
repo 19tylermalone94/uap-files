@@ -31,10 +31,12 @@ export default function VideoViewer({ url, fileName }: VideoViewerProps) {
     if (!videoRef.current) return;
     if (playing) {
       videoRef.current.pause();
+      setPlaying(false);
     } else {
-      videoRef.current.play().catch(() => setError(true));
+      videoRef.current.play()
+        .then(() => setPlaying(true))
+        .catch(() => setError(true));
     }
-    setPlaying((p) => !p);
   }, [playing]);
 
   const handleTimeUpdate = () => {
