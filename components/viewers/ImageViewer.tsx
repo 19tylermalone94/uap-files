@@ -151,7 +151,7 @@ export default function ImageViewer({ url, file }: ImageViewerProps) {
         <Lightbox
           open={lightboxOpen}
           close={() => setLightboxOpen(false)}
-          slides={[{ src: url, alt: file.name }]}
+          slides={[{ src: url ?? "", alt: file.name }]}
           styles={{
             container: {
               backgroundColor: "rgba(5,5,8,0.97)",
