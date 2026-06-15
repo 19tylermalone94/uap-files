@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
 import type { FileRecord } from "@/types";
 import { mockFiles } from "@/lib/mock-files";
+import { keyToType } from "@/lib/s3";
 
 export const revalidate = 3600;
 
@@ -9,13 +10,6 @@ const BUCKET = process.env.S3_BUCKET_NAME;
 const REGION = process.env.AWS_REGION || "us-east-1";
 const ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID;
 const SECRET_KEY = process.env.AWS_SECRET_ACCESS_KEY;
-
-function keyToType(key: string): "pdf" | "video" | "image" {
-  const lower = key.toLowerCase();
-  if (lower.endsWith(".pdf")) return "pdf";
-  if (lower.match(/\.(mp4|mov|avi|mkv|webm)$/)) return "video";
-  return "image";
-}
 
 function keyToId(key: string): string {
   return Buffer.from(key).toString("base64url");

@@ -7,6 +7,7 @@ import {
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import type { FileRecord } from "@/types";
 import { mockFilesById } from "@/lib/mock-files";
+import { keyToType } from "@/lib/s3";
 
 const BUCKET = process.env.S3_BUCKET_NAME;
 const REGION = process.env.AWS_REGION || "us-east-1";
@@ -15,13 +16,6 @@ const SECRET_KEY = process.env.AWS_SECRET_ACCESS_KEY;
 
 function idToKey(id: string): string {
   return Buffer.from(id, "base64url").toString("utf-8");
-}
-
-function keyToType(key: string): "pdf" | "video" | "image" {
-  const lower = key.toLowerCase();
-  if (lower.endsWith(".pdf")) return "pdf";
-  if (lower.match(/\.(mp4|mov|avi|mkv|webm)$/)) return "video";
-  return "image";
 }
 
 export async function GET(
